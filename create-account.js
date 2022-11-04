@@ -1,23 +1,24 @@
+console.clear();
 const { Client, PrivateKey, AccountCreateTransaction, AccountBalanceQuery, Hbar, TransferTransaction} = require("@hashgraph/sdk");
 require("dotenv").config();
 
 async function main() {
 
     //Grab your Hedera testnet account ID and private key from your .env file
-    const myAccountId = process.env.MY_ACCOUNT_ID;
-    const myPrivateKey = process.env.MY_PRIVATE_KEY;
+    const operatorId = process.env.OPERATOR_ID;
+    const operatorKey = process.env.OPERATOR_PVKEY;
 
     // If we weren't able to grab it, we should throw a new error
-    if (myAccountId == null ||
-        myPrivateKey == null ) {
-        throw new Error("Environment variables myAccountId and myPrivateKey must be present");
+    if (operatorId == null ||
+        operatorKey == null ) {
+        throw new Error("Environment variables operatorId and operatorKey must be present");
     }
 
     // Create our connection to the Hedera network
     // The Hedera JS SDK makes this really easy!
     const client = Client.forTestnet();
 
-    client.setOperator(myAccountId, myPrivateKey);
+    client.setOperator(operatorId, operatorKey);
 
     //Create new keys
     const newAccountPrivateKey = PrivateKey.generateED25519(); 
@@ -44,7 +45,7 @@ async function main() {
 
     //Create the transfer transaction
     const sendHbar = await new TransferTransaction()
-        .addHbarTransfer(myAccountId, Hbar.fromTinybars(-1000))
+        .addHbarTransfer(operatorId, Hbar.fromTinybars(-1000))
         .addHbarTransfer(newAccountId, Hbar.fromTinybars(1000))
         .execute(client);
 

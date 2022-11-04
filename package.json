@@ -1,11 +1,12 @@
 {
   "name": "hello-hedera-js-sdk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "hedera: tutorials",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create-account": "node create-account.js",
+    "submit-message": "node submit-message.js",
+    "create-transfer-nft": "node create-transfer-nft.js",
+    "create-transfer-ft": "node create-transfer-ft.js"
   },
   "repository": {
     "type": "git",
