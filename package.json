@@ -6,7 +6,8 @@
     "create-account": "node create-account.js",
     "submit-message": "node submit-message.js",
     "create-transfer-nft": "node create-transfer-nft.js",
-    "create-transfer-ft": "node create-transfer-ft.js"
+    "create-transfer-ft": "node create-transfer-ft.js",
+    "schedule-transaction": "node schedule-transaction.js"
   },
   "repository": {
     "type": "git",
